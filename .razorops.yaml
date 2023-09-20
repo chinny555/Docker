@@ -5,7 +5,7 @@ tasks:
     - run: bundle install
     - commands:
         - docker images
-        - docker push hello-world:latest
+        - docker push hello-world gowthami0511/image2:latest
     - docker/build:
        image: razorci/hello-world
        push: true
