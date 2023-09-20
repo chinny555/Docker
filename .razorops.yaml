@@ -5,11 +5,11 @@ tasks:
     - run: bundle install
     - commands:
         - docker images
-        - docker push gowthami0511/image2:latest
+        - docker push hello-world:latest
     - docker/build:
        image: razorci/hello-world
        push: true
-       tags: ["${hello-world}", "latest"]
+       tags: ["${gowthami0511/image2}", "latest"]
        dockerfile: Dockerfile
        context: .
        args:
