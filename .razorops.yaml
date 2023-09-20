@@ -5,11 +5,11 @@ tasks:
     - run: bundle install
     - commands:
         - docker images
-        - docker push gowthami0511/image2:latest
+        - docker push gowthami0511/demo:latest
     - docker/build:
-       image: razorci/hello-world
+       image: razorci/phpapache
        push: true
-       tags: ["${gowthami0511/image1}", "latest"]
+       tags: ["${gowthami0511/demo}", "latest"]
        dockerfile: Dockerfile
        context: .
        args:
