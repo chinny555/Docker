@@ -1,0 +1,16 @@
+tasks:
+  build-image:
+    steps:
+    - checkout
+    - run: bundle install
+    - commands:
+        - docker images
+        - docker push gowthami0511/image2:latest
+    - docker/build:
+       image: razorci/hello-world
+       push: true
+       tags: ["${hello-world}", "latest"]
+       dockerfile: Dockerfile
+       context: .
+       args:
+       - API_TOKEN=zOT+zClNU8Bv3yiEfQPkrA==
