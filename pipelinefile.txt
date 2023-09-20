@@ -1,0 +1,10 @@
+pipeline {
+    agent { docker { image 'python:3.11.4-hello-world' } }
+    stages {
+        stage('build') {
+            steps {
+                 'python --version'
+            }
+        }
+    }
+}
