@@ -4,7 +4,7 @@ tasks:
     - checkout
     - docker/build:
         image: phpapache
-        tags: ["${CI_COMMIT_SHA}", "latest", "${gowthami0511/demo}"]
+        tags: ["${gowthami0511/demo}", "latest"]
 
   rspec:
     runner:
