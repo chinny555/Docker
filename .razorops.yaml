@@ -3,7 +3,7 @@ tasks:
     steps:
     - checkout
     - docker/build:
-        image: gowthami0511/demo
+        image: latest
         tags: ["${CI_COMMIT_SHA:256}", "latest", "${CI_REPO_BRANCH}"]
 
   rspec:
