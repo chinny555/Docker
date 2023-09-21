@@ -10,7 +10,6 @@ tasks:
     runner:
       containers:
       - image: razorci/ruby:3.2.2
-      - image: phpapache
         options:
         - --name=phpapache
     steps:
