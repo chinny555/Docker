@@ -9,7 +9,7 @@ tasks:
     - docker/build:
        image: razorci/phpapache
        push: true
-       tags: ["${gowthami0511/demo}", "latest"]
+       tags: ["${phpapache}", "latest"]
        dockerfile: Dockerfile
        context: .
        args:
