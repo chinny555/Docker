@@ -3,8 +3,8 @@ tasks:
     steps:
     - checkout
     - docker/build:
-        image: latest
-        tags: ["${CI_COMMIT_SHA:256}", "latest", "${CI_REPO_BRANCH}"]
+        image: phpapache
+        tags: ["${latest}", "gowthami0511/demo", "${CI_REPO_BRANCH}"]
 
   rspec:
     runner:
