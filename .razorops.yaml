@@ -4,7 +4,7 @@ tasks:
     - checkout
     - docker/build:
         image: test-demo
-        tags: ["${gowthami0511/demo}" "latest"]
+        tags:["${gowthami0511/demo}", "latest", "${gowthami0511/demo}"]
 
   rspec:
     runner:
