@@ -3,14 +3,14 @@ tasks:
     steps:
     - checkout
     - docker/build:
-      image: test-demo
+         image: test-demo
         tags: ["${gowthami0511/demo}", "latest" ,"${chinny555/docker}"]
 
   rspec:
     runner:
       containers:
       - images: razorci/ruby:3.2.2
-      - images: phpapache
+      - images: phpapache:latest
         options:
         - --name=phpapache
     steps:
