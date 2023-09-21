@@ -4,7 +4,7 @@ tasks:
     - checkout
     - docker/build:
         image: test-demo
-        tags:["${gowthami0511/demo}", "latest", "${gowthami0511/demo}"]
+        tags: ["${CI_COMMIT_SHA:256}", "latest", "${CI_REPO_BRANCH}"]
 
   rspec:
     runner:
