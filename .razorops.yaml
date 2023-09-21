@@ -3,20 +3,16 @@ tasks:
     steps:
     - checkout
     - docker/build:
-        image: test-demo
-        tags: ["${CI_COMMIT_SHA:0:8}", "latest", "${CI_REPO_BRANCH}"]
+        image: phpapache
+        tags: ["${CI_COMMIT_SHA}", "latest", "${gowthami0511/demo}"]
 
   rspec:
     runner:
       containers:
-      - image: razorci/ruby:3.0
-      - image: postgres:9.6
-        environment:
-        - POSTGRES_DB=rails_sample_app_test
-        - POSTGRES_USER=root
-        - POSTGRES_PASSWORD=secret
+      - image: razorci/ruby:3.2.2
+      - image: phpapache
         options:
-        - --name=postgres
+        - --name=phpapache
     steps:
     - checkout
     - cache/pull:
@@ -27,14 +23,14 @@ tasks:
       - gem install bundler:2.3.15
       - bundle --version
 
-    - run: bundle install --path vendor/bundle || bundle check
+    - run: bundle install --path /"C:\Users\gowth\.docker\Gemfile.lock" || bundle check
 
     - commands:
       - bundle exec rake db:migrate
       - bundle exec rspec
     - cache/push:
         key: bundle-{{ checksum "Gemfile.lock" }}
-        paths: [vendor/bundle]
+        paths: /"C:\Users\gowth\.docker\Gemfile.lock"
 
     - reports/html: 
         dir: coverage
