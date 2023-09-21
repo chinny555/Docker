@@ -4,7 +4,7 @@ tasks:
     - checkout
     - docker/build:
         image: phpapache
-        tags: ["${gowthami0511/demo}", "latest"]
+        tags: ["${gowthami0511/demo}", "latest" ,"${chinny555/docker}"]
 
   rspec:
     runner:
