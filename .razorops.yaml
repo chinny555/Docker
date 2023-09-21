@@ -4,12 +4,20 @@ tasks:
     - checkout
     - run: bundle install
     - commands:
-        - docker images
-        - docker push gowthami0511/demo:latest
+      - gem --version && ruby --version
+      - gem install bundler:2.3.15
+      - bundle --version
+
+    - run: bundle install --path vendor/bundle || bundle check
+
+    - commands:
+      - bundle exec rake db:migrate
+      - bundle exec rspec
     - docker/build:
-       image: razorci/phpapache
+       images: razorci/phpapache
+       images: phpapache:latest
        push: true
-       tags: ["${phpapache}", "latest"]
+       tags: ["${CI_COMMIT_SHA:0:8}", "latest"]
        dockerfile: Dockerfile
        context: .
        args:
