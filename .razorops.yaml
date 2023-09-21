@@ -30,7 +30,7 @@ tasks:
       - bundle exec rspec
     - cache/push:
         key: bundle-{{ checksum "Gemfile.lock" }}
-        paths: /"C:\Users\gowth\.docker\Gemfile.lock"
+        paths: [vendor/bundle]
 
     - reports/html: 
         dir: coverage
