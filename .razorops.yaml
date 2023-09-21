@@ -3,7 +3,7 @@ tasks:
     steps:
     - checkout
     - docker/build:
-        image: test-demo
+        image: phpapache
         tags: ["${gowthami0511/demo "latest"]
 
   rspec:
