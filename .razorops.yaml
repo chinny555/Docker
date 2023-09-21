@@ -2,19 +2,8 @@ tasks:
   build-image:
     steps:
     - checkout
-    - run: bundle install
-    - commands:
-      - gem --version && ruby --version
-      - gem install bundler:2.3.15
-      - bundle --version
-
-    - run: bundle install --path vendor/bundle || bundle check
-
-    - commands:
-      - bundle exec rake db:migrate
-      - bundle exec rspec
     - docker/build:
-       images: razorci/phpapache
+       images: razorci/ruby 3.2.2
        images: phpapache:latest
        push: true
        tags: ["${CI_COMMIT_SHA:0:8}", "latest"]
