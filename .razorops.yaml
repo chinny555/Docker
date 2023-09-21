@@ -3,14 +3,18 @@ tasks:
     steps:
     - checkout
     - docker/build:
-         image: test-demo
-        tags: ["${gowthami0511/demo}", "latest" ,"${chinny555/docker}"]
+        image: test-demo
+        tags: ["${gowthami0511/demo "latest"]
 
   rspec:
     runner:
       containers:
-      - images: razorci/ruby:3.2.2
-      - images: phpapache:latest
+      - image: razorci/ruby:3.2.2
+      - image: postgres:latest
+        environment:
+        - POSTGRES_DB=rails_sample_app_test
+        - POSTGRES_USER=root
+        - POSTGRES_PASSWORD=secret
         options:
         - --name=phpapache
     steps:
@@ -23,7 +27,7 @@ tasks:
       - gem install bundler:2.3.15
       - bundle --version
 
-    - run: bundle install --path /"C:\Users\gowth\.docker\Gemfile.lock" || bundle check
+    - run: bundle install --path vendor/bundle || bundle check
 
     - commands:
       - bundle exec rake db:migrate
