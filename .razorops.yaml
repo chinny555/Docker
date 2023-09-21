@@ -3,7 +3,6 @@ tasks:
     steps:
     - checkout
     - docker/build:
-        image: latest
         tags: ["${gowthami0511/demo}", "latest", ]
 
   rspec:
