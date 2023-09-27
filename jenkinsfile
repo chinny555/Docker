@@ -3,7 +3,6 @@ pipeline {
 
     environment {
         IMAGE_NAME = 'my-php-apache'
-        CONTAINER_NAME = 'my-php-container'
     }
 
     stages {
