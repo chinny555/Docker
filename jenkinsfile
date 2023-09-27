@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                // This stage checks out the source code from your version control system (e.g., Git)
+                // https://github.com/chinny555/docker
                 script {
                     checkout scm
                 }
@@ -20,24 +20,12 @@ pipeline {
             steps {
                 script {
                     // Build the Docker image
-                    docker.build IMAGE_NAME, '-f Dockerfile .'
+                    docker.build phpapache, '-f Dockerfile .'
 
                     // Run the Docker container
-                    docker.image(IMAGE_NAME).withRun('-p 8080:80 --name ${CONTAINER_NAME}') {
-                        // Container is running with Apache serving your PHP application
-                        sh 'sleep infinity'
+                    docker.image(phpapache).withRun('-p 8080:80  {
                     }
                 }
-            }
-        }
-    }
-
-    post {
-        always {
-            // Clean up the container after the build
-            script {
-                docker.stop(CONTAINER_NAME)
-                docker.removeContainer(CONTAINER_NAME)
             }
         }
     }
