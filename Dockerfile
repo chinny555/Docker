@@ -1,5 +1,5 @@
-FROM php:7.1.23-apache
-WORKDIR /
-COPY . /var/www/html
-RUN echo "ServerName localhost:80" 
-RUN docker-php-ext-install pdo_mysql
+FROM php:apache
+WORKDIR /var/www/html
+COPY . /var/www/html/
+EXPOSE 80
+CMD ["apache2-foreground"]
